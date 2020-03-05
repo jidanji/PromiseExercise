@@ -5,6 +5,7 @@
 2、定义常见Ajax请求下使用Promise，使用then，再次返回数据，重新返回promise对象
 3、aysnc await和promise连用。
 4、try{}catch(e){}分别对用promise的哪些数据。
+5、当promise.all里面有一个东西出现异常时，我们怎么做。
 
 ##项目技术
 1、后端的代码采用ASP.NET MVC4 开发工具为Visual Studio 2017
