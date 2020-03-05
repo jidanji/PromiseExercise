@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "All";
+}
+
+<h2>All</h2>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script>
+    function p1() {
+        return new Promise(function (resolve, reject) {
+            $.ajax({
+                url: "GetData",
+                dataType: "JSON",
+                type: "POST",
+                success: function (data) {
+                    resolve(data)
+                }
+            })
+        })
+    }
+    function p2() {
+        return new Promise(function (resolve, reject) {
+            $.ajax({
+                url: "GetData1",
+                dataType: "JSON",
+                type: "POST",
+                success: function (data) {
+                    resolve(data)
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    reject(xhr.statusText);
+                }
+            })
+        })
+    }
+
+    $(function () {
+        var a1 = p1();
+        var a2 = p2();
+        var a3 = p1();
+
+        Promise.all([a1, a2, a3]).then((result) => {
+            console.log(result);             
+        }).catch((error) => {
+            console.log(error)
+        })
+
+    })
+
+
+</script>
+
+

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "ThenThen";
+}
+
+<h2>ThenThen</h2>
+
+<script>
+   var p1= new Promise(function (resolve, reject) {
+        resolve({
+            data: [1, 2, 3, 4],
+            resposneCode: "00001",
+            resposneRemark: "成功"
+        })
+
+        reject({
+            resposneCode: "00000",
+            resposneRemark: "失败，遇到网络问题",
+            data: [2]
+        })
+
+    }).then(function ({ data }) { return { data } }, function ({ data }) { return { data } });
+
+    p1.then(function (data) { console.log(data) }, function ({ data }) { return { data } });
+
+
+
+</script>
+

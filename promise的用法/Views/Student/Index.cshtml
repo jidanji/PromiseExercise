@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<h2>promise的基本用法</h2>
+
+<script>
+    function p1() {
+        return new Promise(function (resolve, reject) {
+            $.ajax({
+                url: "GetData",
+                dataType: "JSON",
+                type: "POST",
+                success: function (data) {
+                    resolve(data)
+                }
+            })
+        })
+    }
+    $(function () {
+        p1().then(({ responseData }) => { console.log(responseData) });
+    })
+ 
+  
+</script>
+
+
+

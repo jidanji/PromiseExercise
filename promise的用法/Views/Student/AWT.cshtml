@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<h2>promise实现写法上的同步</h2>
+<script>
+    function p1() {
+        return new Promise((resolve, reject)=>{
+            $.ajax({
+                url: "GetData",
+                dataType: "JSON",
+                type: "POST",
+                success: function (data) {
+                    resolve(data.responseData)
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    reject("网络错误")
+                }
+            })
+        })
+    }
+
+    async function GetData() {
+        let res = await p1();
+        return res;
+    }
+
+    async function GetData1() {
+        let res = await GetData();
+        console.log(res);
+    }
+
+    
+
+
+
+    $(function () {
+        GetData1();
+    })
+
+
+</script>
+
+
+
